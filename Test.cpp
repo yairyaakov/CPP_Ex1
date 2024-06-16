@@ -14,7 +14,7 @@ TEST_CASE("Test isConnected")
         {0, 1, 0},
         {1, 0, 1},
         {0, 1, 0}};
-    g.loadGraph(graph);
+    g.loadGraph(graph1);
     CHECK(ariel::Algorithms::isConnected(g) == true);
 
     // Undirected disconnected graph
