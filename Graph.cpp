@@ -15,19 +15,24 @@ namespace ariel
     void Graph::loadGraph(const vector<vector<int>>& adjMatrix)
     {
         // Check if the input matrix is a valid adjacency matrix
-        size_t rows = adjMatrix.size();
-        if (rows == 0) {
-            throw std::invalid_argument("Invalid graph: Graph is not valid.");
+        if (adjMatrix.empty() || adjMatrix[0].empty())
+        {
+            throw std::invalid_argument("Invalid graph: The graph matrix is empty.");
         }
 
+        // Check if the input matrix is a vsquare matrix
+        size_t rows = adjMatrix.size();
         size_t columns = adjMatrix[0].size();
         if (rows != columns) {
-            throw std::invalid_argument("Invalid graph: Graph is not valid.");
+            throw std::invalid_argument("Invalid graph: The graph is not a square matrix.");
         }
 
-        for (size_t i = 1; i < rows; i++) {
-            if (adjMatrix[i].size() != columns) {
-                throw std::invalid_argument("Invalid graph: Graph is not valid.");
+        // Check if diagonal elements are all zero
+        for (size_t i = 0; i < adjMatrix.size(); ++i)
+        {
+            if (adjMatrix[i][i] != 0)
+            {
+                throw std::invalid_argument("Invalid graph: Diagonal elements must be zero.");
             }
         }
 
@@ -116,8 +121,8 @@ namespace ariel
 
     //get the adj matrix that represnting the graph
     size_t Graph::getNumVertices() const
-{
-    return adjacencyMatrix.size();
-}
+    {
+        return adjacencyMatrix.size();
+    }
 
 };
