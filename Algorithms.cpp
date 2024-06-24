@@ -130,7 +130,7 @@ namespace ariel
     		// Dijkstra's algorithm main loop
     		while (!pq.empty())
     		{
-        		size_t curr = pq.top().second;
+        		size_t curr = pq.top().second; // Fetching the vertex with smallest distance from the stack
         		pq.pop();
 
         		// Iterate over all neighbors of the current vertex
